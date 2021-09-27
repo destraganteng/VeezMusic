@@ -431,7 +431,8 @@ async def m_cb(b, cb):
             await cb.answer("assistant is not connected to voice chat!", show_alert=True)
 
 
-@Client.on_message(command("play") & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]))
+@authorized_users_only
 async def play(_, message: Message):
     global que
     global useer
